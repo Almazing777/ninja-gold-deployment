@@ -1,0 +1,48 @@
+*{
+	padding: 5px;
+	margin: 5px;
+}
+
+
+input{
+	width:150px;
+}
+
+.row{
+	width: 600px;
+	text-align: center;	
+}
+
+form{
+	align-content: center;
+}
+
+.activities {
+	width: 550px;
+	height: auto;
+	border: 1px solid;
+}
+
+body{
+	width: 650px;
+}
+
+a {
+	color: white;
+}
+
+img {
+	width: 100px;
+	height: 100px;
+}
+
+hr{
+	background-color: gold;
+	width: 450px;
+}
+
+body h2 {
+	color: #4343F3;
+}
+
+

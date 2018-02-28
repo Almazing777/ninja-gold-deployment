@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="x-UA-Compatible" content="ie=edge">
+  <title> Gold Ninja </title>
+  {% load static %}
+  <!-- bootstrap -->
+    <link rel="stylesheet" href="{% static 'ninja_gold/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <h2> Ninja Money </h2>
+  <div class="img"><img src="{% static 'ninja_gold/img/gold.jpg' %}">: {{request.session.gold}}</div>
+  
+  <hr>
+
+  <div class="row">
+    <div class="col-md-4">
+      <p>Farm (earns 10-40 golds) </p> 
+      <form action="/process_money" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="building" value="farm">
+        <input class="btn btn-primary" type="submit" value="Find Gold!">
+      </form> 
+    </div>
+    <div class="col-md-4">
+      <p>Cave (earns 5-10 golds)</p>
+      <form action="/process_money" method="post">
+        {% csrf_token %}
+          <input type="hidden" name="building" value="cave" >
+          <input class="btn btn-primary" type="submit" value="Find Gold!">
+      </form> 
+    </div>      
+    <div class="col-md-4">
+      <p>House (earns 4-5 golds)</p>
+      <form action="/process_money" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="building" value="house" >
+        <input class="btn btn-primary" type="submit" value="Find Gold!">
+      </form> 
+    </div>
+    <div class="col-md-4">
+      <p>Casino (earns/takes 0-50 golds)</p>
+        <form action="/process_money" method="post">
+          {% csrf_token %}
+            <input type="hidden" name="building" value="casino" >
+            <input class="btn btn-primary" type="submit" value="Find Gold!">
+        </form> 
+        <br>
+    </div>
+  </div>
+
+  <hr>
+
+  <label for="activities"> ACTION: </label>
+  <div class="activities">
+    {% for a in request.session.activities %}
+      <p class="{{ a.class }}">{{ a.activity }} ( {{ a.date }} )</p>
+    {% endfor %}
+  </div>
+
+    <button class="btn btn-warning"><a href="/reset"> Reset </a></button>
+</body>
+</html>
